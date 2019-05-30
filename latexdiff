@@ -1586,8 +1586,8 @@ sub flatten {
 
   # Run through filter, to let filterscript have a pass if it was set
   $text = filter($text);
-  # /{(?:[\s]*)(\{((?:(?>[^{}]+)|(?3))*)\})(?:[\s]*)(\{((?:(?>[^{}]+)|(?5))*)\}))/{
-      # , " + ", $3, " + ", $4, " + ", $5
+
+  # Recursively replace \\import and \\subimport files
   $text =~ s/(^(?:[^%\n]|\\%)*)(\\subimport\{(.*?)\}|\\import\{(.*?)\})(?:[\s]*)\{(.*?)\}/{
           # $1 is begline
           # $3 is directory if subimport
